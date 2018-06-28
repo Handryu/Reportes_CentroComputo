@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54244B54-ECD7-4AD5-A307-1E0E4DAFB93B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Reportes_CentroComputo</RootNamespace>
+    <AssemblyName>Reportes_CentroComputo</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MTCollections">
+      <HintPath>..\..\..\..\OneDrive\Documentos\Libs\MTCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="MTControls">
+      <HintPath>..\..\..\..\OneDrive\Documentos\Libs\MTControls.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\OneDrive\Documentos\Libs\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Equipo\CPU.cs" />
+    <Compile Include="Herramientas\GenericConnection.cs" />
+    <Compile Include="Herramientas\MySQLite.cs" />
+    <Compile Include="Equipo\Monitor.cs" />
+    <Compile Include="Equipo\Raton.cs" />
+    <Compile Include="Equipo\Teclado.cs" />
+    <Compile Include="Ventanas\FDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FDepartamento.Designer.cs">
+      <DependentUpon>FDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FEditarEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEditarEquipo.Designer.cs">
+      <DependentUpon>FEditarEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FEditarReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEditarReporte.Designer.cs">
+      <DependentUpon>FEditarReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FInicial.Designer.cs">
+      <DependentUpon>FInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FInit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FInit.Designer.cs">
+      <DependentUpon>FInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FInitMapeo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FInitMapeo.Designer.cs">
+      <DependentUpon>FInitMapeo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FLimpieza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FLimpieza.Designer.cs">
+      <DependentUpon>FLimpieza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FLogin.Designer.cs">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FMapeo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FMapeo.Designer.cs">
+      <DependentUpon>FMapeo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FObjeto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FObjeto.Designer.cs">
+      <DependentUpon>FObjeto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FReporte.Designer.cs">
+      <DependentUpon>FReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FSelect.Designer.cs">
+      <DependentUpon>FSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FTecnico.Designer.cs">
+      <DependentUpon>FTecnico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FUsuario.Designer.cs">
+      <DependentUpon>FUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FVariables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FVariables.Designer.cs">
+      <DependentUpon>FVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Herramientas\ServiceFunctions.cs" />
+    <Compile Include="Ventanas\FProgramas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FProgramas.Designer.cs">
+      <DependentUpon>FProgramas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FCPU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FCPU.Designer.cs">
+      <DependentUpon>FCPU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEquipo.Designer.cs">
+      <DependentUpon>FEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Herramientas\GetHardware.cs" />
+    <Compile Include="Herramientas\InformacionCompleta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Herramientas\InformacionCompleta.designer.cs">
+      <DependentUpon>InformacionCompleta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Equipo\InfoEquipo.cs" />
+    <Compile Include="Herramientas\LOG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Herramientas\LOG.Designer.cs">
+      <DependentUpon>LOG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Herramientas\MySQL.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ventanas\FDepartamento.resx">
+      <DependentUpon>FDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEditarEquipo.resx">
+      <DependentUpon>FEditarEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEditarReporte.resx">
+      <DependentUpon>FEditarReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FInicial.resx">
+      <DependentUpon>FInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FInit.resx">
+      <DependentUpon>FInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FInitMapeo.resx">
+      <DependentUpon>FInitMapeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FLimpieza.resx">
+      <DependentUpon>FLimpieza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FLogin.resx">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FMapeo.resx">
+      <DependentUpon>FMapeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FObjeto.resx">
+      <DependentUpon>FObjeto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FReporte.resx">
+      <DependentUpon>FReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FSelect.resx">
+      <DependentUpon>FSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FTecnico.resx">
+      <DependentUpon>FTecnico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FUsuario.resx">
+      <DependentUpon>FUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FVariables.resx">
+      <DependentUpon>FVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FProgramas.resx">
+      <DependentUpon>FProgramas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FCPU.resx">
+      <DependentUpon>FCPU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEquipo.resx">
+      <DependentUpon>FEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Herramientas\InformacionCompleta.resx">
+      <DependentUpon>InformacionCompleta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Herramientas\LOG.resx">
+      <DependentUpon>LOG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo11.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>
