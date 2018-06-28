@@ -42,8 +42,17 @@ namespace Reportes_CentroComputo.Ventanas
                     case 0:
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Id_Equipo,' ',Falla,' ',Fecha) as ID from reporte where Id_Folio={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
+                    case 1:
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as ID from usuario where Id_Usuario={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        break;
                     case 2:
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Id_Equipo,' ',Id_Cpu) as ID from equipo where Id_Equipo={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        break;
+                    case 3:
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre_Depto,' ') as ID from tecnico where Id_Depto={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        break;
+                    case 4:
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as ID from tecnico where Id_Tecnico={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                 }
                 
@@ -69,6 +78,9 @@ namespace Reportes_CentroComputo.Ventanas
                     break;
                 case 3:
                     new FEditarDepartamento(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
+                    break;
+                case 4:
+                    new FEditarTecnico(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
                     break;
             }
             

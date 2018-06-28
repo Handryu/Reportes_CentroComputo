@@ -105,6 +105,12 @@
     <Compile Include="Ventanas\FEditarReporte.Designer.cs">
       <DependentUpon>FEditarReporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FEditarTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEditarTecnico.Designer.cs">
+      <DependentUpon>FEditarTecnico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FEditarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FEditarReporte.resx">
       <DependentUpon>FEditarReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEditarTecnico.resx">
+      <DependentUpon>FEditarTecnico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FEditarUsuario.resx">
       <DependentUpon>FEditarUsuario.cs</DependentUpon>

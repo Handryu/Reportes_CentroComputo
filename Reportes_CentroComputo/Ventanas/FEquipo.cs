@@ -13,9 +13,27 @@ namespace Reportes_CentroComputo
     public partial class FEquipo : Form
     {
         DBConnect.GenericConnection conexion;
+        ComboBox cmb;
+
         public FEquipo(DBConnect.GenericConnection con)
         {
             InitializeComponent();
+            
+            conexion = con;
+            try
+            {
+                txtIDEquipo.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(Id_Equipo) from equipo").ElementAt(0)[0].ToString()) + 1).ToString();
+            }
+            catch (Exception)
+            {
+                txtIDEquipo.Text = "1";
+            }
+        }
+
+        public FEquipo(DBConnect.GenericConnection con, ComboBox c)
+        {
+            InitializeComponent();
+            cmb = c;
             conexion = con;
             try
             {
@@ -71,7 +89,8 @@ namespace Reportes_CentroComputo
                 values.Add(values.ElementAt(1));
                 conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Id_Equipo = '{0}', Id_Cpu = '{1}', Id_Monitor = '{2}', Id_Teclado = '{3}', Id_Raton = '{4}', Activo = '1', Asignado = '1' WHERE equipo.Id_CPU = '{5}'", values.ToArray()));
             }
-            
+            if(cmb != null)
+                cmb.Text = txtIDEquipo.Text;
             Dispose();
         }
 

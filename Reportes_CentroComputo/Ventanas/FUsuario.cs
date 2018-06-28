@@ -45,7 +45,7 @@ namespace Reportes_CentroComputo.Ventanas
             partes.Add("Apellido Materno");
             partes.Add("Departamento");
             partes.Add("Equipo");
- 
+            Button n = new Button();
 
             int x = ((panel.Width - 360) / 2);
 
@@ -83,9 +83,9 @@ namespace Reportes_CentroComputo.Ventanas
 
                     if(i==0)
                     {
-                        Button n = new Button();
+                        
                         n.Text = "E";
-                        n.SetBounds(x + 360, y - 1, 20, aumento + 2);
+                        
                         n.Font = new Font("Verdana", 8);
                         n.FlatStyle = FlatStyle.Flat;
                         n.Click += N_Click;
@@ -98,7 +98,8 @@ namespace Reportes_CentroComputo.Ventanas
                 y += aumento + 10;
 
             }
-
+            n.SetBounds(x + 360, y - 29, 20, 22);
+            
             Button b = new Button();
             b.Text = "Guardar";
             b.BackColor = Color.White;
@@ -112,19 +113,17 @@ namespace Reportes_CentroComputo.Ventanas
 
         private void N_Click(object sender, EventArgs e)
         {
+            ComboBox c = null;
             try
             {
-                ComboBox c;
+                
                 c = (ComboBox)panel.Controls[12];
-                List<string> values = new List<string>();
-                values.Add(((TextBox)panel.Controls[2]).Text);
-                values.Add(((TextBox)panel.Controls[4]).Text);
-                values.Add(((TextBox)panel.Controls[6]).Text);
-                c.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT Id_Equipo from usuario where Nombre='{0}' && Ap_Pat='{1}' && Ap_Mat='{2}'", values.ToArray())).ElementAt(0)[0].ToString();
-            }catch(Exception)
+                new FEquipo(conexion, c).Visible = true;
+            }
+            catch(Exception)
             {
                 MessageBox.Show("Este usuario no tiene ninguna computadora asignada, primero registre su computadora");
-                new FEquipo(conexion).Visible = true;
+                
                 Dispose();
             }
         }
