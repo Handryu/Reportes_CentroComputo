@@ -61,9 +61,15 @@ namespace Reportes_CentroComputo.Ventanas
                 case 0:
                     new FEditarReporte(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
                     break;
+                case 1:
+                    new FEditarUsuario(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
+                    break;
                 case 2:
                     new FEditarEquipo(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
-                    break;                
+                    break;
+                case 3:
+                    new FEditarDepartamento(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
+                    break;
             }
             
             Hide();

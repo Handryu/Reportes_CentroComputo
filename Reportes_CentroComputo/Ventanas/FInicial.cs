@@ -104,5 +104,25 @@ namespace Reportes_CentroComputo.Ventanas
         {
             new FTecnico(conexion).Visible = true;
         }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 1).Visible = true;
+        }
+
+        private void equipoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 2).Visible = true;
+        }
+
+        private void departamentoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 3).Visible = true;
+        }
+
+        private void tecnicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 4).Visible = true;
+        }
     }
 }

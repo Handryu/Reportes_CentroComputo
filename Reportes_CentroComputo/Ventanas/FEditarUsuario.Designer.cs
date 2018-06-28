@@ -1,6 +1,6 @@
 ﻿namespace Reportes_CentroComputo.Ventanas
 {
-    partial class FEditarReporte
+    partial class FEditarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -33,26 +33,24 @@
             // 
             // panel
             // 
-            this.panel.AutoScroll = true;
-            this.panel.BackgroundImage = global::Reportes_CentroComputo.Properties.Resources.Logo11;
+            this.panel.BackgroundImage = global::Reportes_CentroComputo.Properties.Resources.Logo9;
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(414, 405);
+            this.panel.Size = new System.Drawing.Size(284, 261);
             this.panel.TabIndex = 0;
             // 
-            // FEditarReporte
+            // FEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 405);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "FEditarReporte";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FEditarReporte";
-            this.Load += new System.EventHandler(this.FEditarReporte_Load);
+            this.Name = "FEditarUsuario";
+            this.Text = "Editar Usuario";
+            this.Load += new System.EventHandler(this.FEditarUsuario_Load);
             this.ResumeLayout(false);
 
         }

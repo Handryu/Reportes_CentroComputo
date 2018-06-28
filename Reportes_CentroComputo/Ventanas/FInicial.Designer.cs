@@ -141,28 +141,28 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // equipoToolStripMenuItem
             // 
             this.equipoToolStripMenuItem.Name = "equipoToolStripMenuItem";
-            this.equipoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.equipoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.equipoToolStripMenuItem.Text = "Equipo";
             this.equipoToolStripMenuItem.Click += new System.EventHandler(this.equipoToolStripMenuItem_Click);
             // 
             // departamentoToolStripMenuItem
             // 
             this.departamentoToolStripMenuItem.Name = "departamentoToolStripMenuItem";
-            this.departamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.departamentoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.departamentoToolStripMenuItem.Text = "Departamento";
             this.departamentoToolStripMenuItem.Click += new System.EventHandler(this.departamentoToolStripMenuItem_Click);
             // 
             // tecnicosToolStripMenuItem
             // 
             this.tecnicosToolStripMenuItem.Name = "tecnicosToolStripMenuItem";
-            this.tecnicosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tecnicosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.tecnicosToolStripMenuItem.Text = "Tecnicos";
             this.tecnicosToolStripMenuItem.Click += new System.EventHandler(this.tecnicosToolStripMenuItem_Click);
             // 
@@ -183,26 +183,30 @@
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
+            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // equipoToolStripMenuItem1
             // 
             this.equipoToolStripMenuItem1.Name = "equipoToolStripMenuItem1";
-            this.equipoToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            this.equipoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.equipoToolStripMenuItem1.Text = "Equipo";
+            this.equipoToolStripMenuItem1.Click += new System.EventHandler(this.equipoToolStripMenuItem1_Click);
             // 
             // departamentoToolStripMenuItem1
             // 
             this.departamentoToolStripMenuItem1.Name = "departamentoToolStripMenuItem1";
-            this.departamentoToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            this.departamentoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.departamentoToolStripMenuItem1.Text = "Departamento";
+            this.departamentoToolStripMenuItem1.Click += new System.EventHandler(this.departamentoToolStripMenuItem1_Click);
             // 
             // tecnicoToolStripMenuItem
             // 
             this.tecnicoToolStripMenuItem.Name = "tecnicoToolStripMenuItem";
-            this.tecnicoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.tecnicoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tecnicoToolStripMenuItem.Text = "Tecnico";
+            this.tecnicoToolStripMenuItem.Click += new System.EventHandler(this.tecnicoToolStripMenuItem_Click);
             // 
             // btnDelete
             // 

@@ -87,6 +87,12 @@
     <Compile Include="Ventanas\FDepartamento.Designer.cs">
       <DependentUpon>FDepartamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FEditarDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEditarDepartamento.Designer.cs">
+      <DependentUpon>FEditarDepartamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FEditarEquipo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,12 @@
     </Compile>
     <Compile Include="Ventanas\FEditarReporte.Designer.cs">
       <DependentUpon>FEditarReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEditarUsuario.Designer.cs">
+      <DependentUpon>FEditarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\FInicial.cs">
       <SubType>Form</SubType>
@@ -216,11 +228,17 @@
     <EmbeddedResource Include="Ventanas\FDepartamento.resx">
       <DependentUpon>FDepartamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEditarDepartamento.resx">
+      <DependentUpon>FEditarDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FEditarEquipo.resx">
       <DependentUpon>FEditarEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FEditarReporte.resx">
       <DependentUpon>FEditarReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEditarUsuario.resx">
+      <DependentUpon>FEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FInicial.resx">
       <DependentUpon>FInicial.cs</DependentUpon>

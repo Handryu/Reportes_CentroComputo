@@ -17,7 +17,14 @@ namespace Reportes_CentroComputo
         {
             InitializeComponent();
             conexion = con;
-            
+            try
+            {
+                txtIDEquipo.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(Id_Equipo) from equipo").ElementAt(0)[0].ToString()) + 1).ToString();
+            }
+            catch(Exception)
+            {
+                txtIDEquipo.Text = "1";
+            }
         }
 
         private void FEquipo_Load(object sender, EventArgs e)
@@ -84,6 +91,16 @@ namespace Reportes_CentroComputo
                 btnGuardar.Enabled = false;
             else
                 btnGuardar.Enabled = true;
+        }
+
+        private void txtIDMonitor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIDMonitor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

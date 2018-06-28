@@ -43,8 +43,8 @@
             this.metroLabel3 = new System.Windows.Forms.Label();
             this.metroLabel2 = new System.Windows.Forms.Label();
             this.metroLabel1 = new System.Windows.Forms.Label();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.picFondo = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panelFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFondo)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +93,8 @@
             this.txtIDMonitor.Name = "txtIDMonitor";
             this.txtIDMonitor.Size = new System.Drawing.Size(134, 22);
             this.txtIDMonitor.TabIndex = 19;
+            this.txtIDMonitor.TextChanged += new System.EventHandler(this.txtIDMonitor_TextChanged);
+            this.txtIDMonitor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIDMonitor_KeyPress);
             // 
             // txtIDCPU
             // 
@@ -183,12 +185,6 @@
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "ID del equipo";
             // 
-            // timer
-            // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 500;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // picFondo
             // 
             this.picFondo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -198,6 +194,12 @@
             this.picFondo.Size = new System.Drawing.Size(455, 388);
             this.picFondo.TabIndex = 13;
             this.picFondo.TabStop = false;
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // FEquipo
             // 
