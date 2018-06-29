@@ -153,6 +153,12 @@
     <Compile Include="Ventanas\FMapeo.Designer.cs">
       <DependentUpon>FMapeo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FMonitor.Designer.cs">
+      <DependentUpon>FMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FObjeto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FMapeo.resx">
       <DependentUpon>FMapeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FMonitor.resx">
+      <DependentUpon>FMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FObjeto.resx">
       <DependentUpon>FObjeto.cs</DependentUpon>

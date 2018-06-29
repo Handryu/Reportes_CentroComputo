@@ -241,6 +241,7 @@ namespace Reportes_CentroComputo.Herramientas
 
         public void crearTablas(DBConnect.GenericConnection conexion)
         {
+            conexion.command.ExecuteSentence("CREATE TABLE consultas ( Consulta TEXT NOT NULL );");
             conexion.command.ExecuteSentence("CREATE TABLE cpu (  Id_Cpu varchar(70) NOT NULL,  Num_Serie int(11) DEFAULT NULL,  Num_Inv varchar(25) DEFAULT NULL,  Marca varchar(30) DEFAULT NULL,  Modelo varchar(30) DEFAULT NULL,  Procesador varchar(30) DEFAULT NULL,  Mod_Ram varchar(30) DEFAULT NULL,  Gb_Ram int(11) DEFAULT NULL,  Mod_Dd varchar(30) DEFAULT NULL,  Gb_Dd int(11) DEFAULT NULL);");
             conexion.command.ExecuteSentence("CREATE TABLE departamento (  Id_Depto int(11) NOT NULL,  Nombre_Depto varchar(40) DEFAULT NULL);");
             conexion.command.ExecuteSentence("CREATE TABLE equipo (  Id_Equipo int(11) NOT NULL,  Id_Cpu varchar(70) DEFAULT NULL,  Id_Monitor int(11) DEFAULT NULL,  Id_Teclado int(11) DEFAULT NULL,  Id_Raton int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1',  Asignado tinyint(1) NOT NULL DEFAULT '1');");
@@ -249,7 +250,7 @@ namespace Reportes_CentroComputo.Herramientas
             conexion.command.ExecuteSentence("CREATE TABLE reporte (  Id_Folio int(11) NOT NULL,  ID_Tecnico int(11) DEFAULT NULL,  ID_Usuario int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Falla varchar(50) DEFAULT NULL,  Componente_Dañado varchar(20) DEFAULT NULL,  Solucion varchar(50) DEFAULT NULL,  Notas varchar(20) DEFAULT NULL,  Fecha timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);");
             conexion.command.ExecuteSentence("CREATE TABLE tecnico (  Id_Tecnico int(11) NOT NULL,  Nombre varchar(20) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL);");
             conexion.command.ExecuteSentence("CREATE TABLE usuario (  Id_Usuario int(11) NOT NULL,  Nombre varchar(15) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL,  Id_Depto int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1');");
-            conexion.command.ExecuteSentence("CREATE TABLE consultas ( Consulta TEXT NOT NULL );");
+            
         }
 
         public void sincronizarDBLocal(DBConnect.GenericConnection con)

@@ -102,8 +102,8 @@ namespace Reportes_CentroComputo.Ventanas
                     new FEditarTecnico(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
                     break;
             }
+            Dispose();
             
-            Hide();
         }
 
         private void FSelectReporte_Load(object sender, EventArgs e)
@@ -131,6 +131,7 @@ namespace Reportes_CentroComputo.Ventanas
                     conexion.command.ExecuteSentence(string.Format("DELETE from tecnico WHERE Id_Tecnico={0}", comboBox1.SelectedItem.ToString()));
                     break;
             }
+            Dispose();
         }
     }
 }

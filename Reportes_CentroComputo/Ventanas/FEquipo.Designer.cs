@@ -45,12 +45,14 @@
             this.metroLabel1 = new System.Windows.Forms.Label();
             this.picFondo = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panelFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFondo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelFondo
             // 
+            this.panelFondo.Controls.Add(this.button1);
             this.panelFondo.Controls.Add(this.txtIDRaton);
             this.panelFondo.Controls.Add(this.txtIDTeclado);
             this.panelFondo.Controls.Add(this.txtIDMonitor);
@@ -201,6 +203,17 @@
             this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(270, 152);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Nuevo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,5 +251,6 @@
         private System.Windows.Forms.Button btnOpenCPU;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button button1;
     }
 }

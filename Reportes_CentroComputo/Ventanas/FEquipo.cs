@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reportes_CentroComputo.Ventanas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,7 @@ namespace Reportes_CentroComputo
             try
             {
                 txtIDEquipo.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(Id_Equipo) from equipo").ElementAt(0)[0].ToString()) + 1).ToString();
+                
             }
             catch(Exception)
             {
@@ -82,7 +84,7 @@ namespace Reportes_CentroComputo
             values.Add(val);
             if(conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM equipo WHERE Id_Cpu='{0}'",txtIDCPU.Text)).ElementAt(0)[0].Equals("0"))
             {
-                conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, {3}, {4}, '1', '1')", values.ToArray()));                
+                conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, '{3}', '{4}', '1', '1')", values.ToArray()));                
             }
             else
             {
@@ -120,6 +122,11 @@ namespace Reportes_CentroComputo
         private void txtIDMonitor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new FMonitor(conexion, txtIDMonitor);
         }
     }
 }

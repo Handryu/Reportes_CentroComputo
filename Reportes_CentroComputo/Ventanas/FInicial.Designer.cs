@@ -26,6 +26,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInicial));
             this.Opciones = new System.Windows.Forms.ToolStrip();
+            this.Fondo = new System.Windows.Forms.PictureBox();
             this.OpcionReportes = new System.Windows.Forms.ToolStripSplitButton();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,10 +47,9 @@
             this.equipoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tecnicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Fondo = new System.Windows.Forms.PictureBox();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.baseCentralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.baseLocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opcionSincronizar = new System.Windows.Forms.ToolStripSplitButton();
+            this.baseCentral = new System.Windows.Forms.ToolStripMenuItem();
+            this.baseLocal = new System.Windows.Forms.ToolStripMenuItem();
             this.Opciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Fondo)).BeginInit();
             this.SuspendLayout();
@@ -63,12 +63,23 @@
             this.btnAdd,
             this.btnUpdate,
             this.btnDelete,
-            this.toolStripSplitButton1});
+            this.opcionSincronizar});
             this.Opciones.Location = new System.Drawing.Point(0, 0);
             this.Opciones.Name = "Opciones";
             this.Opciones.Size = new System.Drawing.Size(574, 25);
             this.Opciones.TabIndex = 0;
             this.Opciones.Text = "toolStrip1";
+            // 
+            // Fondo
+            // 
+            this.Fondo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fondo.Image = global::Reportes_CentroComputo.Properties.Resources.Logo;
+            this.Fondo.Location = new System.Drawing.Point(0, 25);
+            this.Fondo.Name = "Fondo";
+            this.Fondo.Size = new System.Drawing.Size(574, 381);
+            this.Fondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Fondo.TabIndex = 1;
+            this.Fondo.TabStop = false;
             // 
             // OpcionReportes
             // 
@@ -243,42 +254,31 @@
             this.tecnicoToolStripMenuItem1.Text = "Tecnico";
             this.tecnicoToolStripMenuItem1.Click += new System.EventHandler(this.tecnicoToolStripMenuItem1_Click);
             // 
-            // Fondo
+            // opcionSincronizar
             // 
-            this.Fondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fondo.Image = global::Reportes_CentroComputo.Properties.Resources.Logo;
-            this.Fondo.Location = new System.Drawing.Point(0, 25);
-            this.Fondo.Name = "Fondo";
-            this.Fondo.Size = new System.Drawing.Size(574, 381);
-            this.Fondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Fondo.TabIndex = 1;
-            this.Fondo.TabStop = false;
+            this.opcionSincronizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.opcionSincronizar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.baseCentral,
+            this.baseLocal});
+            this.opcionSincronizar.Image = ((System.Drawing.Image)(resources.GetObject("opcionSincronizar.Image")));
+            this.opcionSincronizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.opcionSincronizar.Name = "opcionSincronizar";
+            this.opcionSincronizar.Size = new System.Drawing.Size(81, 22);
+            this.opcionSincronizar.Text = "Sincronizar";
             // 
-            // toolStripSplitButton1
+            // baseCentral
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.baseCentralToolStripMenuItem,
-            this.baseLocalToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(81, 22);
-            this.toolStripSplitButton1.Text = "Sincronizar";
+            this.baseCentral.Name = "baseCentral";
+            this.baseCentral.Size = new System.Drawing.Size(152, 22);
+            this.baseCentral.Text = "Base central";
+            this.baseCentral.Click += new System.EventHandler(this.baseCentralToolStripMenuItem_Click);
             // 
-            // baseCentralToolStripMenuItem
+            // baseLocal
             // 
-            this.baseCentralToolStripMenuItem.Name = "baseCentralToolStripMenuItem";
-            this.baseCentralToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.baseCentralToolStripMenuItem.Text = "Base central";
-            this.baseCentralToolStripMenuItem.Click += new System.EventHandler(this.baseCentralToolStripMenuItem_Click);
-            // 
-            // baseLocalToolStripMenuItem
-            // 
-            this.baseLocalToolStripMenuItem.Name = "baseLocalToolStripMenuItem";
-            this.baseLocalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.baseLocalToolStripMenuItem.Text = "Base local";
-            this.baseLocalToolStripMenuItem.Click += new System.EventHandler(this.baseLocalToolStripMenuItem_Click);
+            this.baseLocal.Name = "baseLocal";
+            this.baseLocal.Size = new System.Drawing.Size(152, 22);
+            this.baseLocal.Text = "Base local";
+            this.baseLocal.Click += new System.EventHandler(this.baseLocalToolStripMenuItem_Click);
             // 
             // FInicial
             // 
@@ -326,8 +326,8 @@
         private System.Windows.Forms.ToolStripSplitButton OpcionReportes;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verReporteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripMenuItem baseCentralToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem baseLocalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSplitButton opcionSincronizar;
+        private System.Windows.Forms.ToolStripMenuItem baseCentral;
+        private System.Windows.Forms.ToolStripMenuItem baseLocal;
     }
 }

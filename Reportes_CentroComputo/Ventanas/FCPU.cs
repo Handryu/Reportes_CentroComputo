@@ -16,6 +16,7 @@ namespace Reportes_CentroComputo
     {
 
         TextBox t;
+
         DBConnect.GenericConnection conexion;
         public FCPU(DBConnect.GenericConnection con, TextBox te)
         {
@@ -25,6 +26,8 @@ namespace Reportes_CentroComputo
             createForm();
             fillData();
         }
+
+        
 
         private void FCPU_Load(object sender, EventArgs e)
         {
