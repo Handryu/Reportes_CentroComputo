@@ -25,6 +25,14 @@ namespace DBConnect
             functions = new Functions3(conexionSQL);
         }
 
+        public GenericConnection(string[]access)
+        {
+            conexionSQL = new MySQL(access[0], access[1], access[2], access[3]);
+            connector = new Connector(conexionSQL);
+            command = new Command(conexionSQL);
+            functions = new Functions3(conexionSQL);
+        }
+
         public GenericConnection(string database)
         {
             conexionSQLite = new MySQLite(database);

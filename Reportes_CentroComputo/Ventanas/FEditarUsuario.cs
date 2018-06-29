@@ -19,6 +19,7 @@ namespace Reportes_CentroComputo.Ventanas
             InitializeComponent();
             this.id = id;
             conexion = con;
+            createForm();
         }
 
         private void FEditarUsuario_Load(object sender, EventArgs e)

@@ -88,9 +88,20 @@ namespace DBConnect
 
         public void ExecuteSentence(string sentencia)
         {
+            ExecuteSentenceBak(sentencia);
             SQLiteCommand cmd;
             cmd = conexion.CreateCommand();
             cmd.CommandText = sentencia;
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();            
+        }
+
+        public void ExecuteSentenceBak(string sentencia)
+        {
+            SQLiteCommand cmd;
+            cmd = conexion.CreateCommand();
+            cmd.CommandText = string.Format("INSERT INTO consultas (Consulta) VALUES ('0}');", sentencia);
             conexion.Open();
             cmd.ExecuteNonQuery();
             conexion.Close();

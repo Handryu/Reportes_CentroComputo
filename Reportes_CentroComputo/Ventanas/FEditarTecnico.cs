@@ -43,7 +43,8 @@ namespace Reportes_CentroComputo.Ventanas
                 textBox2.Text = ".";
             if (textBox3.Text.Length < 0)
                 textBox3.Text = ".";
-            conexion.command.ExecuteSentence(string.Format("UPDATE tecnico SET Nombre = '{0}', Ap_Pat = '{1}', Ap_Mat = '{2}' WHERE tecnico.Id_Tecnico = {3}", textBox1.Text, textBox2.Text, textBox3.Text, textBox1.Text));
+            conexion.command.ExecuteSentence(string.Format("UPDATE tecnico SET Nombre = '{0}', Ap_Pat = '{1}', Ap_Mat = '{2}' WHERE tecnico.Id_Tecnico = {3}", textBox1.Text, textBox2.Text, textBox3.Text, id));
+            Dispose();
         }
     }
 }

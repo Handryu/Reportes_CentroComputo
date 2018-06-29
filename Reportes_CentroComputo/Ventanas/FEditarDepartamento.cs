@@ -35,6 +35,7 @@ namespace Reportes_CentroComputo.Ventanas
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             conexion.command.ExecuteSentence(string.Format("UPDATE departamento SET Nombre_Depto = '{0}' WHERE departamento.Id_Depto = {1}", txtNombre.Text, id));
+            Dispose();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Reportes_CentroComputo.Ventanas
             else
             {
                 conexion = new DBConnect.GenericConnection("DBInterna");
-                crearTablas();
+                new Herramientas.ServiceFunctions().crearTablas(conexion);
             }
             
         }
@@ -35,17 +35,7 @@ namespace Reportes_CentroComputo.Ventanas
             conexion = new DBConnect.GenericConnection(user, pass, server, database);
         }
 
-        public void crearTablas()
-        {
-            conexion.command.ExecuteSentence("CREATE TABLE cpu (  Id_Cpu varchar(70) NOT NULL,  Num_Serie int(11) DEFAULT NULL,  Num_Inv varchar(25) DEFAULT NULL,  Marca varchar(30) DEFAULT NULL,  Modelo varchar(30) DEFAULT NULL,  Procesador varchar(30) DEFAULT NULL,  Mod_Ram varchar(30) DEFAULT NULL,  Gb_Ram int(11) DEFAULT NULL,  Mod_Dd varchar(30) DEFAULT NULL,  Gb_Dd int(11) DEFAULT NULL);");
-            conexion.command.ExecuteSentence("CREATE TABLE departamento (  Id_Depto int(11) NOT NULL,  Nombre_Depto varchar(40) DEFAULT NULL);");
-            conexion.command.ExecuteSentence("CREATE TABLE equipo (  Id_Equipo int(11) NOT NULL,  Id_Cpu varchar(70) DEFAULT NULL,  Id_Monitor int(11) DEFAULT NULL,  Id_Teclado int(11) DEFAULT NULL,  Id_Raton int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1',  Asignado tinyint(1) NOT NULL DEFAULT '1');");
-            conexion.command.ExecuteSentence("CREATE TABLE historial (  Id_Historial int(11) NOT NULL,  Id_Usuario int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Fecha datetime NOT NULL DEFAULT CURRENT_TIMESTAMP);");
-            conexion.command.ExecuteSentence("CREATE TABLE monitor (  Id_Monitor int(11) NOT NULL,  Num_Serie int(11) DEFAULT NULL,  Num_Inv varchar(30) DEFAULT NULL);");
-            conexion.command.ExecuteSentence("CREATE TABLE reporte (  Id_Folio int(11) NOT NULL,  ID_Tecnico int(11) DEFAULT NULL,  ID_Usuario int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Falla varchar(50) DEFAULT NULL,  Componente_Dañado varchar(20) DEFAULT NULL,  Solucion varchar(50) DEFAULT NULL,  Notas varchar(20) DEFAULT NULL,  Fecha timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);");
-            conexion.command.ExecuteSentence("CREATE TABLE tecnico (  Id_Tecnico int(11) NOT NULL,  Nombre varchar(20) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL);");
-            conexion.command.ExecuteSentence("CREATE TABLE usuario (  Id_Usuario int(11) NOT NULL,  Nombre varchar(15) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL,  Id_Depto int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1');");
-        }
+        
 
         public bool DBExist(string fname)
         {
@@ -82,7 +72,7 @@ namespace Reportes_CentroComputo.Ventanas
 
         private void verReporteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FSelect(conexion, 0).Visible = true;
+            new FSelect(conexion, 0, true).Visible = true;
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,22 +97,61 @@ namespace Reportes_CentroComputo.Ventanas
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FSelect(conexion, 1).Visible = true;
+            new FSelect(conexion, 1, true).Visible = true;
         }
 
         private void equipoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new FSelect(conexion, 2).Visible = true;
+            new FSelect(conexion, 2, true).Visible = true;
         }
 
         private void departamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new FSelect(conexion, 3).Visible = true;
+            new FSelect(conexion, 3, true).Visible = true;
         }
 
         private void tecnicoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FSelect(conexion, 4).Visible = true;
+            new FSelect(conexion, 4, true).Visible = true;
+        }
+
+        private void usuarioToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 1, false).Visible = true;
+        }
+
+        private void equipoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 2, false).Visible = true;
+        }
+
+        private void departamentoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 3, false).Visible = true;
+        }
+
+        private void tecnicoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FSelect(conexion, 4, false).Visible = true;
+        }
+
+        private void baseLocalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Herramientas.ServiceFunctions().sincronizarDBLocal(conexion);
+            MessageBox.Show("Listo");
+        }
+
+        private void baseCentralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                new Herramientas.ServiceFunctions().sincronizarDBCentral(conexion);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Sesion cancelada o datos de acceso incorectos");
+            }
+            MessageBox.Show("Listo");
         }
     }
 }

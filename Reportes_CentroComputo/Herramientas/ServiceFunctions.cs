@@ -239,5 +239,83 @@ namespace Reportes_CentroComputo.Herramientas
             return string.Format(b.ToString(), v.ToArray<Object>());
         }
 
+        public void crearTablas(DBConnect.GenericConnection conexion)
+        {
+            conexion.command.ExecuteSentence("CREATE TABLE cpu (  Id_Cpu varchar(70) NOT NULL,  Num_Serie int(11) DEFAULT NULL,  Num_Inv varchar(25) DEFAULT NULL,  Marca varchar(30) DEFAULT NULL,  Modelo varchar(30) DEFAULT NULL,  Procesador varchar(30) DEFAULT NULL,  Mod_Ram varchar(30) DEFAULT NULL,  Gb_Ram int(11) DEFAULT NULL,  Mod_Dd varchar(30) DEFAULT NULL,  Gb_Dd int(11) DEFAULT NULL);");
+            conexion.command.ExecuteSentence("CREATE TABLE departamento (  Id_Depto int(11) NOT NULL,  Nombre_Depto varchar(40) DEFAULT NULL);");
+            conexion.command.ExecuteSentence("CREATE TABLE equipo (  Id_Equipo int(11) NOT NULL,  Id_Cpu varchar(70) DEFAULT NULL,  Id_Monitor int(11) DEFAULT NULL,  Id_Teclado int(11) DEFAULT NULL,  Id_Raton int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1',  Asignado tinyint(1) NOT NULL DEFAULT '1');");
+            conexion.command.ExecuteSentence("CREATE TABLE historial (  Id_Historial int(11) NOT NULL,  Id_Usuario int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Fecha datetime NOT NULL DEFAULT CURRENT_TIMESTAMP);");
+            conexion.command.ExecuteSentence("CREATE TABLE monitor (  Id_Monitor int(11) NOT NULL,  Num_Serie int(11) DEFAULT NULL,  Num_Inv varchar(30) DEFAULT NULL);");
+            conexion.command.ExecuteSentence("CREATE TABLE reporte (  Id_Folio int(11) NOT NULL,  ID_Tecnico int(11) DEFAULT NULL,  ID_Usuario int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Falla varchar(50) DEFAULT NULL,  Componente_Dañado varchar(20) DEFAULT NULL,  Solucion varchar(50) DEFAULT NULL,  Notas varchar(20) DEFAULT NULL,  Fecha timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP);");
+            conexion.command.ExecuteSentence("CREATE TABLE tecnico (  Id_Tecnico int(11) NOT NULL,  Nombre varchar(20) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL);");
+            conexion.command.ExecuteSentence("CREATE TABLE usuario (  Id_Usuario int(11) NOT NULL,  Nombre varchar(15) DEFAULT NULL,  Ap_Pat varchar(10) DEFAULT NULL,  Ap_Mat varchar(10) DEFAULT NULL,  Id_Depto int(11) DEFAULT NULL,  Id_Equipo int(11) DEFAULT NULL,  Activo tinyint(1) NOT NULL DEFAULT '1');");
+            conexion.command.ExecuteSentence("CREATE TABLE consultas ( Consulta TEXT NOT NULL );");
+        }
+
+        public void sincronizarDBLocal(DBConnect.GenericConnection con)
+        {
+            
+            DBConnect.GenericConnection conexion = new DBConnect.GenericConnection("DBInterna");
+            crearTablas(conexion);
+            foreach(var table in con.command.ExecuteSentenceResponse("SHOW TABLES"))
+            {
+                Console.WriteLine(table[0]);
+                switch(table[0].ToString())
+                {
+                    case "cpu":
+                        foreach(var res in con.command.ExecuteSentenceResponse("SELECT * from cpu"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO cpu (Id_Cpu, Num_Serie, Num_Inv, Marca, Modelo, Procesador, Mod_Ram, Gb_Ram, Mod_Dd, Gb_Dd) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')", res));
+                        }
+                        break;
+                    case "departamento":
+                        foreach(var res in con.command.ExecuteSentenceResponse("SELECT * from departamento"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO departamento (Id_Depto, Nombre_Depto) VALUES ({0}, '{1}');", res));
+                        }
+                        break;
+                    case "equipo":
+                        foreach (var res in con.command.ExecuteSentenceResponse("SELECT * from equipo"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, {3}, {4}, '1', '1')", res));
+                        }
+                        break;
+                    case "historial":
+                        Console.WriteLine("");
+                        break;
+                    case "monitor":
+                        Console.WriteLine("");
+                        break;
+                    case "reporte":
+                        foreach (var res in con.command.ExecuteSentenceResponse("SELECT * from reporte"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO reporte (Id_Folio, ID_Tecnico, ID_Usuario, Id_Equipo, Falla, Componente_Dañado, Solucion, Notas) VALUES( {0},{1},{2},{3},'{4}','{5}','{6}','{7}')", res));
+                        }
+                        break;
+                    case "tecnico":
+                        foreach (var res in con.command.ExecuteSentenceResponse("SELECT * from tecnico"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO tecnico (Id_Tecnico, Nombre, Ap_Pat, Ap_Mat) VALUES ({0}, '{1}', '{2}', '{3}')", res));
+                        }
+                        break;
+                    case "usuario":
+                        foreach (var res in con.command.ExecuteSentenceResponse("SELECT * from usuario"))
+                        {
+                            conexion.command.ExecuteSentence(string.Format("INSERT INTO usuario (Id_Usuario, Nombre, Ap_Pat, Ap_Mat, Id_Depto, Id_Equipo, Activo) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '1')", res));
+                        }
+                        break;
+                }
+            }
+        }
+
+        public void sincronizarDBCentral(DBConnect.GenericConnection con)
+        {
+            DBConnect.GenericConnection conexion = new DBConnect.GenericConnection(Microsoft.VisualBasic.Interaction.InputBox("Ingrese sus datos de acceso separados por coma\n\rusuario,contraseña,servidor,basede datos","Nueva sesion","Remote,CComputo,localhost,servicio").Trim().Split(','));
+            //conexion.command.ExecuteSentence("INSERT INTO `test` (`id`, `val`) VALUES (NULL, 'mel');");
+            foreach(var res in con.command.ExecuteSentenceResponse("SELECT * consultas"))
+            {
+                conexion.command.ExecuteSentence(res[0].ToString());
+            }
+        }
     }
 }

@@ -16,18 +16,37 @@ namespace Reportes_CentroComputo.Ventanas
         int tipo = 0;
         
 
-        public FSelect(DBConnect.GenericConnection con, int tipo)
+        public FSelect(DBConnect.GenericConnection con, int tipo, bool modo)
         {
             InitializeComponent();
             conexion = con;
             this.tipo = tipo;
+            if(modo)
+            {
+                btnBorrar.Enabled = false;
+                btnEditar.Enabled = true;
+            }
+            else
+            {
+                btnBorrar.Enabled = true;
+                btnEditar.Enabled = false;
+            }
             switch(tipo)
             {
-                case 1:
+                case 0:
                     conexion.functions.FillComboBox("SELECT Id_Folio from reporte", "Id_Folio", comboBox1);
                     break;
+                case 1:
+                    conexion.functions.FillComboBox("SELECT Id_Usuario from usuario", "Id_Usuario", comboBox1);
+                    break;
                 case 2:
-                    conexion.functions.FillComboBox("SELECT Id_Equipo from equipo", "Id_Equipo", comboBox1);
+                    conexion.functions.FillComboBox("SELECT Id_Cpu from equipo", "Id_Cpu", comboBox1);
+                    break;
+                case 3:
+                    conexion.functions.FillComboBox("SELECT Id_Depto from departamento", "Id_Depto", comboBox1);
+                    break;
+                case 4:
+                    conexion.functions.FillComboBox("SELECT Id_Tecnico from tecnico", "Id_Tecnico", comboBox1);
                     break;
             }
             
@@ -46,10 +65,10 @@ namespace Reportes_CentroComputo.Ventanas
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as ID from usuario where Id_Usuario={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                     case 2:
-                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Id_Equipo,' ',Id_Cpu) as ID from equipo where Id_Equipo={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Id_Equipo,' ',Id_Cpu) as ID from equipo where Id_Cpu='{0}'", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                     case 3:
-                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre_Depto,' ') as ID from tecnico where Id_Depto={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre_Depto,' ') as ID from departamento where Id_Depto={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                     case 4:
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as ID from tecnico where Id_Tecnico={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
@@ -90,6 +109,28 @@ namespace Reportes_CentroComputo.Ventanas
         private void FSelectReporte_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            switch(tipo)
+            {
+                case 0:
+                    conexion.command.ExecuteSentence(string.Format("DELETE from usuario WHERE Id_Folio={0}",comboBox1.SelectedItem.ToString()));
+                    break;
+                case 1:
+                    conexion.command.ExecuteSentence(string.Format("DELETE from usuario WHERE Id_Usuario={0}", comboBox1.SelectedItem.ToString()));
+                    break;
+                case 2:
+                    conexion.command.ExecuteSentence(string.Format("DELETE from equipo WHERE Id_Equipo={0}", comboBox1.SelectedItem.ToString()));
+                    break;
+                case 3:
+                    conexion.command.ExecuteSentence(string.Format("DELETE from departamento WHERE Id_Depto={0}", comboBox1.SelectedItem.ToString()));
+                    break;
+                case 4:
+                    conexion.command.ExecuteSentence(string.Format("DELETE from tecnico WHERE Id_Tecnico={0}", comboBox1.SelectedItem.ToString()));
+                    break;
+            }
         }
     }
 }

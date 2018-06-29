@@ -87,7 +87,7 @@ namespace Reportes_CentroComputo
             else
             {
                 values.Add(values.ElementAt(1));
-                conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Id_Equipo = '{0}', Id_Cpu = '{1}', Id_Monitor = '{2}', Id_Teclado = '{3}', Id_Raton = '{4}', Activo = '1', Asignado = '1' WHERE equipo.Id_CPU = '{5}'", values.ToArray()));
+                conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Id_Equipo = '{0}', Id_Cpu = '{1}', Id_Monitor = '{2}', Id_Teclado = '{3}', Id_Raton = '{4}' WHERE Id_CPU = '{5}'", values.ToArray()));
             }
             if(cmb != null)
                 cmb.Text = txtIDEquipo.Text;
