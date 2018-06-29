@@ -16,9 +16,9 @@ namespace Reportes_CentroComputo.Herramientas
     {
         public bool DeleteTemporals()
         {
-            foreach (var item in Directory.GetFileSystemEntries(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), @"Users\hellw\AppData\Local\Temp")))))
+            foreach (var item in Directory.GetFileSystemEntries(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory),Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))))))
             {
-                Delete(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory),@"Users\hellw\AppData\Local\Temp")),item));
+                Delete(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))),item));
                 //Console.WriteLine(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), @"Users\hellw\AppData\Local\Temp")), item));
             }
             foreach (var item in Directory.GetFileSystemEntries(Path.Combine(Environment.ExpandEnvironmentVariables(Path.Combine(Path.GetPathRoot(Environment.SystemDirectory), @"Windows\Temp")))))
