@@ -41,6 +41,8 @@ namespace DBConnect
             functions = new Functions3(conexionSQLite);
         }
 
+        
+
         public class Connector
         {
             private MySQL conexionSQL;
@@ -103,6 +105,13 @@ namespace DBConnect
                 }
                 else
                 {
+                    if(sentencia.Contains("Concat"))
+                    {
+                        sentencia.Replace("Concat", "");
+                        sentencia.Replace(',', ' ');
+                        sentencia.Replace("' '", "|| ' ' ||");
+                    }
+                    Console.WriteLine(sentencia);
                     conexionSQLite.command.ExecuteSentence(sentencia);
                 }
             }
@@ -115,6 +124,13 @@ namespace DBConnect
                 }
                 else
                 {
+                    if (sentencia.Contains("Concat"))
+                    {
+                        sentencia.Replace("Concat", "");
+                        sentencia.Replace(',', ' ');
+                        sentencia.Replace("' '", "|| ' ' ||");
+                    }
+                    Console.WriteLine(sentencia);
                     return conexionSQLite.command.ExecuteSentenceResponse(sentencia);
                 }
             }

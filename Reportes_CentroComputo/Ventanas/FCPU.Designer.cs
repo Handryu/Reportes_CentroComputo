@@ -1,4 +1,6 @@
-﻿namespace Reportes_CentroComputo
+﻿using System.Windows.Forms;
+
+namespace Reportes_CentroComputo
 {
     partial class FCPU
     {
@@ -15,6 +17,9 @@
         {
             if (disposing && (components != null))
             {
+                
+                
+                this.t.Text = "";
                 components.Dispose();
             }
             base.Dispose(disposing);

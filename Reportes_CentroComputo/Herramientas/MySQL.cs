@@ -90,14 +90,21 @@ namespace DBConnect
 
         public void ExecuteSentence(string sentencia)
         {
-            Console.WriteLine(sentencia);
-            MySqlCommand cmd;
-            cmd = conexion.CreateCommand();
-            cmd.CommandText = sentencia;
-            conexion.Open();
-            cmd.ExecuteNonQuery();
-            conexion.Close();
-            //MessageBox.Show("Ejecucion finalizada");
+            try
+            {
+                Console.WriteLine(sentencia);
+                MySqlCommand cmd;
+                cmd = conexion.CreateCommand();
+                cmd.CommandText = sentencia;
+                conexion.Open();
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format("Error inesperado: {0}", e.Message));
+                conexion.Close();
+            }            
         }
 
         public List<object[]> ExecuteSentenceResponse(string sentencia)
@@ -114,7 +121,6 @@ namespace DBConnect
                 cmd.CommandText = sentencia;
                 conexion.Open();
                 consulta = cmd.ExecuteReader();
-                //MessageBox.Show(consulta.FieldCount.ToString());
                 buffer = consulta.FieldCount;
                 resultados = new object[buffer];
                 while (consulta.Read())
@@ -123,18 +129,16 @@ namespace DBConnect
                     int v = 0;
                     while (v < resultados.Length)
                     {
-                        resultados[v] = consulta.GetString(v);
+                        resultados[v] = consulta.GetValue(v);
                         v++;
                     }
                     resultado.Add(resultados);
                 }
                 conexion.Close();
-                //MessageBox.Show("Ejecucion finalizada");
             }
             catch (Exception e)
             {
-
-                MessageBox.Show(e.Message);
+                MessageBox.Show(string.Format("Error inesperado: {0}", e.Message));
                 conexion.Close();
             }
             return resultado;

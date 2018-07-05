@@ -134,7 +134,7 @@ namespace Reportes_CentroComputo.Ventanas
             try
             {
                 t = (TextBox)panel.Controls[2];
-                t.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(ID_Usuario) from usuario").ElementAt(0)[0].ToString()) + 1).ToString();
+                t.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(Id_Usuario) from usuario").ElementAt(0)[0].ToString()) + 1).ToString();
                 ComboBox c;
                 c = (ComboBox)panel.Controls[10];
                 conexion.functions.FillComboBox("SELECT Nombre_Depto from departamento", "Nombre_Depto", c);
@@ -156,7 +156,7 @@ namespace Reportes_CentroComputo.Ventanas
             values.Add(((TextBox)panel.Controls[4]).Text);
             values.Add(((TextBox)panel.Controls[6]).Text);
             values.Add(((TextBox)panel.Controls[8]).Text);
-            values.Add(((ComboBox)panel.Controls[10]).Text);
+            values.Add(conexion.command.ExecuteSentenceResponse(string.Format("SELECT MAX(Id_Depto) from departamento where Nombre_Depto='{0}'",((ComboBox)panel.Controls[10]).Text)).ElementAt(0)[0].ToString());
             values.Add(((ComboBox)panel.Controls[12]).Text);
             
             conexion.command.ExecuteSentence(string.Format("INSERT INTO usuario (Id_Usuario, Nombre, Ap_Pat, Ap_Mat, Id_Depto, Id_Equipo, Activo) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '1')",values.ToArray()));

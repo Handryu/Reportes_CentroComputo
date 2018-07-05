@@ -100,7 +100,7 @@ namespace Reportes_CentroComputo.Ventanas
             values.Add(((TextBox)panel.Controls[3]).Text);
             values.Add(((TextBox)panel.Controls[5]).Text);
             values.Add(((TextBox)panel.Controls[7]).Text);
-            values.Add(((ComboBox)panel.Controls[9]).Text);
+            values.Add(conexion.command.ExecuteSentenceResponse(string.Format("SELECT MAX(Id_Depto) from departamento where Nombre_Depto='{0}'", ((ComboBox)panel.Controls[9]).Text)).ElementAt(0)[0].ToString());
             values.Add(((ComboBox)panel.Controls[11]).Text);
             values.Add(((TextBox)panel.Controls[1]).Text);
             conexion.command.ExecuteSentence(string.Format("UPDATE usuario SET Id_Usuario = '{0}', Nombre = '{1}', Ap_Pat = '{2}', Ap_Mat = '{3}', Id_Depto = '{4}', Id_Equipo = '{5}' WHERE Id_Usuario = {6}", values.ToArray()));

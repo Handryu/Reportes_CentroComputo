@@ -27,7 +27,13 @@ namespace Reportes_CentroComputo
             fillData();
         }
 
-        
+        public FCPU(DBConnect.GenericConnection con)
+        {
+            InitializeComponent();
+            conexion = con;
+            createForm();
+            fillData();
+        }
 
         private void FCPU_Load(object sender, EventArgs e)
         {
@@ -93,6 +99,8 @@ namespace Reportes_CentroComputo
             values.Add(((TextBox)panel.Controls[15]).Text);
             values.Add(((TextBox)panel.Controls[17]).Text);
             values.Add(((TextBox)panel.Controls[19]).Text);
+            
+            this.t.Text = ((TextBox)panel.Controls[1]).Text;
             if (conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM cpu WHERE Id_Cpu='{0}'", ((TextBox)panel.Controls[1]).Text)).ElementAt(0)[0].Equals("0"))
             {
                 conexion.command.ExecuteSentence(string.Format("INSERT INTO cpu (Id_Cpu, Num_Serie, Num_Inv, Marca, Modelo, Procesador, Mod_Ram, Gb_Ram, Mod_Dd, Gb_Dd) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')", values.ToArray()));

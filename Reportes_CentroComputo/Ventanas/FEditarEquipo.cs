@@ -65,5 +65,10 @@ namespace Reportes_CentroComputo.Ventanas
 
             Dispose();
         }
+
+        private void btnOpenCPU_Click(object sender, EventArgs e)
+        {
+            new FCPU(conexion, txtIDCPU).Visible = true;
+        }
     }
 }

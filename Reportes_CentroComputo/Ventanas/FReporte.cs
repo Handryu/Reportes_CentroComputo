@@ -146,7 +146,7 @@ namespace Reportes_CentroComputo.Ventanas
                 index += 2;
             }
             
-            conexion.command.ExecuteSentence(string.Format("INSERT INTO reporte (Id_Folio, ID_Tecnico, ID_Usuario, Id_Equipo, Falla, Componente_Dañado, Solucion, Notas) VALUES( {0},{1},{2},{3},'{4}','{5}','{6}','{7}')", values.ToArray()));
+            conexion.command.ExecuteSentence(string.Format("INSERT INTO reporte (Id_Folio, ID_Tecnico, ID_Usuario, Id_Equipo, Falla, Componente_Dañado, Solucion, Notas) VALUES( {0},{1},{2},{3},\"{4}\",'{5}',\"{6}\",\"{7}\")", values.ToArray()));
             Dispose();
         }
 

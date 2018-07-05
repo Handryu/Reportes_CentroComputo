@@ -35,7 +35,7 @@ namespace DBConnect
 
         public bool DBExist(string fname)
         {
-            FileInfo db = new FileInfo(fname);
+            FileInfo db = new FileInfo(string.Format("{0}.sqlite", fname));
             if (db.Exists)
                 return true;
             return false;
@@ -131,7 +131,7 @@ namespace DBConnect
                     int v = 0;
                     while (v < resultados.Length)
                     {
-                        resultados[v] = consulta.GetString(v);
+                        resultados[v] = consulta.GetValue(v);
                         v++;
                     }
                     resultado.Add(resultados);

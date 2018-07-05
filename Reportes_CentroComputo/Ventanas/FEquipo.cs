@@ -126,7 +126,7 @@ namespace Reportes_CentroComputo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new FMonitor(conexion, txtIDMonitor);
+            new FMonitor(conexion, txtIDMonitor).Visible = true;
         }
     }
 }

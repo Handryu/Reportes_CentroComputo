@@ -116,6 +116,7 @@
             this.btnOpenCPU.TabIndex = 28;
             this.btnOpenCPU.Text = "Ver";
             this.btnOpenCPU.UseVisualStyleBackColor = true;
+            this.btnOpenCPU.Click += new System.EventHandler(this.btnOpenCPU_Click);
             // 
             // btnGuardar
             // 
