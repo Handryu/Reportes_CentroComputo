@@ -146,9 +146,9 @@ namespace Reportes_CentroComputo.Ventanas
 
             t = (TextBox)panel.Controls[1];
             t.Text = id;
-            conexion.functions.FillComboBox("select Concat(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from tecnico", "NombreC", (ComboBox)panel.Controls[3]);
+            conexion.functions.FillComboBox("select CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from tecnico", "NombreC", (ComboBox)panel.Controls[3]);
             ((ComboBox)panel.Controls[3]).Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from tecnico WHERE Id_Tecnico = (SELECT Id_Tecnico from reporte WHERE Id_Folio={0})", id)).ElementAt(0)[0].ToString();
-            conexion.functions.FillComboBox("select Concat(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from usuario", "NombreC", (ComboBox)panel.Controls[5]);
+            conexion.functions.FillComboBox("select CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from usuario", "NombreC", (ComboBox)panel.Controls[5]);
             ((ComboBox)panel.Controls[5]).Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from usuario WHERE Id_Usuario = (SELECT Id_Usuario from reporte WHERE Id_Folio={0})", id)).ElementAt(0)[0].ToString();
             t = (TextBox)panel.Controls[7];
             t.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT Id_Equipo from reporte where Id_Folio={0}", id)).ElementAt(0)[0].ToString();

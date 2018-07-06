@@ -102,6 +102,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(260, 22);
             this.txtUser.TabIndex = 5;
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown);
             // 
             // txtPass
             // 
@@ -112,6 +113,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(260, 22);
             this.txtPass.TabIndex = 6;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // txtServer
             // 

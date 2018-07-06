@@ -105,11 +105,11 @@ namespace DBConnect
                 }
                 else
                 {
-                    if(sentencia.Contains("Concat"))
+                    if (sentencia.Contains("CONCAT"))
                     {
-                        sentencia.Replace("Concat", "");
-                        sentencia.Replace(',', ' ');
-                        sentencia.Replace("' '", "|| ' ' ||");
+                        sentencia.Replace("CONCAT", "");
+                        sentencia.Replace(",", "||");
+
                     }
                     Console.WriteLine(sentencia);
                     conexionSQLite.command.ExecuteSentence(sentencia);
@@ -124,11 +124,11 @@ namespace DBConnect
                 }
                 else
                 {
-                    if (sentencia.Contains("Concat"))
+                    if (sentencia.Contains("CONCAT"))
                     {
-                        sentencia.Replace("Concat", "");
-                        sentencia.Replace(',', ' ');
-                        sentencia.Replace("' '", "|| ' ' ||");
+                        sentencia.Replace("CONCAT", "");
+                        sentencia.Replace(",", "||");
+
                     }
                     Console.WriteLine(sentencia);
                     return conexionSQLite.command.ExecuteSentenceResponse(sentencia);
@@ -194,6 +194,13 @@ namespace DBConnect
                 }
                 else
                 {
+                    if (sentencia.Contains("CONCAT"))
+                    {
+                        sentencia = sentencia.Replace("CONCAT", "");
+                        sentencia = sentencia.Replace(",", "||");
+                        
+                    }
+                    Console.WriteLine(sentencia);
                     conexionSQLite.functions.FillComboBox(sentencia, key, cmb);
                 }
             }
@@ -206,6 +213,7 @@ namespace DBConnect
                 }
                 else
                 {
+                    
                     conexionSQLite.functions.getDataBases(cmb);
                 }
             }

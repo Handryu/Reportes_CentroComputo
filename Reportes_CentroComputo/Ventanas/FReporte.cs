@@ -161,18 +161,25 @@ namespace Reportes_CentroComputo.Ventanas
                 t.Enabled = false;
                 t.BackColor = Color.White;
                 t = (TextBox)panel.Controls[9];
-                t.Enabled = false;
                 t.BackColor = Color.White;
-
+                t.Enabled = false;
                 t = (TextBox)panel.Controls[1];
                 t.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT max(Id_Folio) FROM reporte").ElementAt(0)[0].ToString()) + 1).ToString();
-                conexion.functions.FillComboBox("select Concat(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from tecnico", "NombreC", (ComboBox)panel.Controls[3]);
-                conexion.functions.FillComboBox("select Concat(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from usuario", "NombreC", (ComboBox)panel.Controls[6]);
+                conexion.functions.FillComboBox("select CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from tecnico", "NombreC", (ComboBox)panel.Controls[3]);
+                conexion.functions.FillComboBox("select CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as NombreC from usuario", "NombreC", (ComboBox)panel.Controls[6]);
+                ComboBox c = (ComboBox)panel.Controls[6];
+                c.SelectedIndexChanged += C_SelectedIndexChanged;
             }
             catch(Exception)
             {
                 t.Text = "0";
             }
+        }
+
+        private void C_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBox t = (TextBox)panel.Controls[9];
+            t.Text = conexion.command.ExecuteSentenceResponse(string.Format("select id_equipo from usuario where Nombre='{0}' and Ap_pat='{1}' and Ap_Mat='{2}'",((ComboBox)panel.Controls[6]).SelectedItem.ToString().Split(' '))).ElementAt(0)[0].ToString();
         }
     }
 }

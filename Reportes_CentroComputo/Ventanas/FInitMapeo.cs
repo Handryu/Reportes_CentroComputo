@@ -17,6 +17,7 @@ namespace Reportes_CentroComputo
         public FInitMapeo()
         {
             InitializeComponent();
+            map = new FMapeo();
         }
 
         public FInitMapeo(int x, int y, FMapeo m)
@@ -41,6 +42,7 @@ namespace Reportes_CentroComputo
             x = int.Parse(cmbCols.SelectedItem.ToString());
             y = int.Parse(cmbFilas.SelectedItem.ToString());
             map.GenerateSalon(x, y);
+            map.Visible = true;
             Dispose();
         }
     }

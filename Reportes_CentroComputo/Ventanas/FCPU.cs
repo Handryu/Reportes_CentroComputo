@@ -99,11 +99,18 @@ namespace Reportes_CentroComputo
             values.Add(((TextBox)panel.Controls[15]).Text);
             values.Add(((TextBox)panel.Controls[17]).Text);
             values.Add(((TextBox)panel.Controls[19]).Text);
-            
-            this.t.Text = ((TextBox)panel.Controls[1]).Text;
-            if (conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM cpu WHERE Id_Cpu='{0}'", ((TextBox)panel.Controls[1]).Text)).ElementAt(0)[0].Equals("0"))
+            if(this.t != null)
             {
-                conexion.command.ExecuteSentence(string.Format("INSERT INTO cpu (Id_Cpu, Num_Serie, Num_Inv, Marca, Modelo, Procesador, Mod_Ram, Gb_Ram, Mod_Dd, Gb_Dd) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')", values.ToArray()));
+                this.t.Text = ((TextBox)panel.Controls[1]).Text;
+
+            }
+            
+            if (conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM cpu WHERE Id_Cpu='{0}'", ((TextBox)panel.Controls[1]).Text)).ElementAt(0)[0].ToString().Equals("0"))
+            {
+                if(this.t != null)
+                    conexion.command.ExecuteSentence(string.Format("INSERT INTO cpu (Id_Cpu, Num_Serie, Num_Inv, Marca, Modelo, Procesador, Mod_Ram, Gb_Ram, Mod_Dd, Gb_Dd) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')", values.ToArray()));
+                else
+                    conexion.command.ExecuteSentence(string.Format("INSERT INTO cpu (Id_Cpu, Num_Serie, Num_Inv, Marca, Modelo, Procesador, Mod_Ram, Gb_Ram, Mod_Dd, Gb_Dd, Asignado) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '0')", values.ToArray()));
             }
             else
             {
@@ -119,7 +126,11 @@ namespace Reportes_CentroComputo
            
             t = (TextBox)panel.Controls[1];
             t.Text = new Herramientas.GetHardware().SearchInfo("Win32_ComputerSystemProduct", "UUID");
-            this.t.Text = t.Text;
+            if(this.t != null)
+            {
+                this.t.Text = t.Text;
+            }
+            
             t = (TextBox)panel.Controls[3];
             t.Text = new Herramientas.GetHardware().SearchInfo("Win32_BIOS", "SerialNumber");
             t = (TextBox)panel.Controls[7];

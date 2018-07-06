@@ -82,9 +82,12 @@ namespace Reportes_CentroComputo
             if (val.Length < 0)
                 val = "NULL";
             values.Add(val);
-            if(conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM equipo WHERE Id_Cpu='{0}'",txtIDCPU.Text)).ElementAt(0)[0].Equals("0"))
+            if(conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM equipo WHERE Id_Cpu='{0}'",txtIDCPU.Text)).ElementAt(0)[0].ToString().Equals("0"))
             {
-                conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, '{3}', '{4}', '1', '1')", values.ToArray()));                
+                if(cmb != null)
+                    conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, '{3}', '{4}', '1', '1')", values.ToArray()));
+                else
+                    conexion.command.ExecuteSentence(string.Format("INSERT INTO equipo (Id_Equipo, Id_Cpu, Id_Monitor, Id_Teclado, Id_Raton, Activo, Asignado) VALUES ({0}, '{1}', {2}, '{3}', '{4}', '1', '0')", values.ToArray()));
             }
             else
             {
@@ -100,7 +103,7 @@ namespace Reportes_CentroComputo
         {
             txtIDEquipo.Enabled = false;
             txtIDEquipo.BackColor = Color.White;
-            if (!conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM equipo WHERE Id_Cpu='{0}'", txtIDCPU.Text)).ElementAt(0)[0].Equals("0"))
+            if (!conexion.command.ExecuteSentenceResponse(string.Format("SELECT count(*) FROM equipo WHERE Id_Cpu='{0}'", txtIDCPU.Text)).ElementAt(0)[0].ToString().Equals("0"))
                 txtIDEquipo.Text= (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT Id_Equipo FROM equipo where ID_CPU='"+txtIDCPU.Text+"'").ElementAt(0)[0].ToString())).ToString();
             else
                 txtIDEquipo.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT max(Id_Equipo) FROM equipo").ElementAt(0)[0].ToString()) + 1).ToString();

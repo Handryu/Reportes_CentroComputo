@@ -48,5 +48,27 @@ namespace Reportes_CentroComputo.Ventanas
                 btnLogin.Enabled = false;
             }
         }
+
+        private void txtUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtUser.Text.Length > 0 && txtPass.Text.Length > 0)
+                {
+                    btnLogin.Focus();
+                }
+            }
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if (txtUser.Text.Length > 0 && txtPass.Text.Length > 0)
+                {
+                    btnLogin.Focus();
+                }
+            }
+        }
     }
 }

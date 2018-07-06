@@ -39,7 +39,10 @@ namespace Reportes_CentroComputo.Ventanas
         {
             if(t != null)
                 t.Text = (int.Parse(conexion.command.ExecuteSentenceResponse("SELECT MAX(Id_Monitor) from monitor").ElementAt(0)[0].ToString()) + 1).ToString();
-            conexion.command.ExecuteSentence(string.Format("INSERT INTO monitor (Id_Monitor, Num_Serie, Num_Inv, Marca) VALUES (NULL, '{0}', '{1}','{2}');", txtNSerie.Text, txtNInv.Text, cmbMarcas.SelectedItem.ToString()));
+            if (t != null)
+                conexion.command.ExecuteSentence(string.Format("INSERT INTO monitor (Id_Monitor, Num_Serie, Num_Inv, Marca) VALUES (NULL, '{0}', '{1}','{2}');", txtNSerie.Text, txtNInv.Text, cmbMarcas.SelectedItem.ToString()));
+            else
+                conexion.command.ExecuteSentence(string.Format("INSERT INTO monitor (Id_Monitor, Num_Serie, Num_Inv, Marca, Asignado) VALUES (NULL, '{0}', '{1}','{2}', '0');", txtNSerie.Text, txtNInv.Text, cmbMarcas.SelectedItem.ToString()));
             Dispose();
         }
 

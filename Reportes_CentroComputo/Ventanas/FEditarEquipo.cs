@@ -17,7 +17,7 @@ namespace Reportes_CentroComputo.Ventanas
         {
             InitializeComponent();
             conexion = con;
-            prepareData(id);
+            prepareData(conexion.command.ExecuteSentenceResponse(string.Format("select Id_Cpu from equipo where id_equipo='{0}'",id)).ElementAt(0)[0].ToString());
         }
 
         private void FEditarEquipo_Load(object sender, EventArgs e)
@@ -61,7 +61,11 @@ namespace Reportes_CentroComputo.Ventanas
             if (val.Length < 0)
                 val = "NULL";
             values.Add(val);
-            conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Id_Equipo = '{0}', Id_Cpu = '{1}', Id_Monitor = '{2}', Id_Teclado = '{3}', Id_Raton = '{4}', Activo = '1', Asignado = '1' WHERE equipo.Id_CPU = '{5}'", values.ToArray()));
+            val = txtIDEquipo.Text;
+            if (val.Length < 0)
+                val = "NULL";
+            values.Add(val);
+            conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Id_Equipo = '{0}', Id_Cpu = '{1}', Id_Monitor = '{2}', Id_Teclado = '{3}', Id_Raton = '{4}', Activo = '1', Asignado = '1' WHERE equipo.Id_Equipo = '{5}'", values.ToArray()));
 
             Dispose();
         }

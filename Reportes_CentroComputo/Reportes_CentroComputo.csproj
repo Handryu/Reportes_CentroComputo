@@ -117,6 +117,12 @@
     <Compile Include="Ventanas\FEditarUsuario.Designer.cs">
       <DependentUpon>FEditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FEstadoBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FEstadoBD.Designer.cs">
+      <DependentUpon>FEstadoBD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FEditarUsuario.resx">
       <DependentUpon>FEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FEstadoBD.resx">
+      <DependentUpon>FEstadoBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FInicial.resx">
       <DependentUpon>FInicial.cs</DependentUpon>

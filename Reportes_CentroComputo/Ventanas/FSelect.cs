@@ -57,6 +57,9 @@ namespace Reportes_CentroComputo.Ventanas
                 case 5:
                     conexion.functions.FillComboBox("SELECT Id_Monitor from monitor where Activo=1", "Id_Monitor", comboBox1);
                     break;
+                case 6:
+                    conexion.functions.FillComboBox("SELECT Id_CPU from cpu where Activo=1", "Id_CPU", comboBox1);
+                    break;
             }
             
         }
@@ -71,7 +74,7 @@ namespace Reportes_CentroComputo.Ventanas
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Id_Equipo,' ',Falla,' ',Fecha) as ID from reporte where Id_Folio={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                     case 1:
-                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT Id_Usuario from usuario where Nombre='{0}' and Ap_Pat='{1}', and Ap_Mat='{2}'", comboBox1.SelectedItem.ToString().Split(' '))).ElementAt(0)[0].ToString();
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT Id_Usuario from usuario where Nombre='{0}' and Ap_Pat='{1}' and Ap_Mat='{2}'", comboBox1.SelectedItem.ToString().Split(' '))).ElementAt(0)[0].ToString();
                         break;
                     case 2:
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(cpu.Marca,' ',cpu.Modelo,' ',cpu.Num_Serie,' ',cpu.Num_Inv,' ',usuario.Nombre,' ',usuario.Ap_Pat,' ',usuario.Ap_Mat) FROM cpu,usuario WHERE cpu.Id_Cpu IN (SELECT equipo.Id_Cpu FROM equipo WHERE equipo.Id_Equipo='{0}') AND usuario.Id_Equipo IN (SELECT usuario.Id_Equipo FROM usuario WHERE usuario.Id_Equipo='{1}')", comboBox1.SelectedItem.ToString(), comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
@@ -83,7 +86,10 @@ namespace Reportes_CentroComputo.Ventanas
                         textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Nombre,' ',Ap_Pat,' ',Ap_Mat) as ID from tecnico where Id_Tecnico={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                     case 5:
-                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Num_Serie,' ',Marca,' ',Num_Inventario) as ID from monitor where Id_Tecnico={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Num_Serie,' ',Marca,' ',Num_Inv) as ID from monitor where Id_Tecnico={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
+                        break;
+                    case 6:
+                        textBox1.Text = conexion.command.ExecuteSentenceResponse(string.Format("SELECT CONCAT(Num_Serie,' ',Marca,' ',Num_Inv) as ID from cpu where Id_CPU={0}", comboBox1.SelectedItem.ToString())).ElementAt(0)[0].ToString();
                         break;
                 }
                 
@@ -102,7 +108,7 @@ namespace Reportes_CentroComputo.Ventanas
                     new FEditarReporte(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
                     break;
                 case 1:
-                    new FEditarUsuario(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
+                    new FEditarUsuario(conexion, textBox1.Text).Visible = true;
                     break;
                 case 2:
                     new FEditarEquipo(conexion, comboBox1.SelectedItem.ToString()).Visible = true;
@@ -130,7 +136,7 @@ namespace Reportes_CentroComputo.Ventanas
                     conexion.command.ExecuteSentence(string.Format("DELETE from usuario WHERE Id_Folio={0}",comboBox1.SelectedItem.ToString()));
                     break;
                 case 1:
-                    conexion.command.ExecuteSentence(string.Format("UPDATE usuario SET Activo = '0' WHERE Id_Usuario ={0}", comboBox1.SelectedItem.ToString()));
+                    conexion.command.ExecuteSentence(string.Format("UPDATE usuario SET Activo = '0' WHERE Id_Usuario ={0}", textBox1.Text));
                     break;
                 case 2:
                     conexion.command.ExecuteSentence(string.Format("UPDATE equipo SET Activo = '0' WHERE Id_Equipo={0}", comboBox1.SelectedItem.ToString()));
@@ -143,6 +149,9 @@ namespace Reportes_CentroComputo.Ventanas
                     break;
                 case 5:
                     conexion.command.ExecuteSentence(string.Format("UPDATE monitor SET Activo = '0' WHERE Id_Monitor={0}", comboBox1.SelectedItem.ToString()));
+                    break;
+                case 6:
+                    conexion.command.ExecuteSentence(string.Format("UPDATE cpu SET Activo = '0' WHERE Id_CPU={0}", comboBox1.SelectedItem.ToString()));
                     break;
             }
             Dispose();

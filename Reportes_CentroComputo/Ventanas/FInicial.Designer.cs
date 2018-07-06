@@ -26,6 +26,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInicial));
             this.Opciones = new System.Windows.Forms.ToolStrip();
+            this.Fondo = new System.Windows.Forms.PictureBox();
             this.OpcionReportes = new System.Windows.Forms.ToolStripSplitButton();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verReporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,6 +37,7 @@
             this.equipoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tecnicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUpdate = new System.Windows.Forms.ToolStripSplitButton();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.equipoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,12 +48,12 @@
             this.equipoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tecnicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.monitorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionSincronizar = new System.Windows.Forms.ToolStripSplitButton();
             this.baseCentral = new System.Windows.Forms.ToolStripMenuItem();
             this.baseLocal = new System.Windows.Forms.ToolStripMenuItem();
-            this.Fondo = new System.Windows.Forms.PictureBox();
-            this.monitorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.monitorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cPUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cPUToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Opciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Fondo)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +73,17 @@
             this.Opciones.Size = new System.Drawing.Size(574, 25);
             this.Opciones.TabIndex = 0;
             this.Opciones.Text = "toolStrip1";
+            // 
+            // Fondo
+            // 
+            this.Fondo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Fondo.Image = global::Reportes_CentroComputo.Properties.Resources.Logo;
+            this.Fondo.Location = new System.Drawing.Point(0, 25);
+            this.Fondo.Name = "Fondo";
+            this.Fondo.Size = new System.Drawing.Size(574, 381);
+            this.Fondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Fondo.TabIndex = 1;
+            this.Fondo.TabStop = false;
             // 
             // OpcionReportes
             // 
@@ -127,7 +140,8 @@
             this.equipoToolStripMenuItem,
             this.departamentoToolStripMenuItem,
             this.tecnicosToolStripMenuItem,
-            this.monitorToolStripMenuItem});
+            this.monitorToolStripMenuItem,
+            this.cPUToolStripMenuItem});
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdd.Name = "btnAdd";
@@ -161,6 +175,13 @@
             this.tecnicosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tecnicosToolStripMenuItem.Text = "Tecnicos";
             this.tecnicosToolStripMenuItem.Click += new System.EventHandler(this.tecnicosToolStripMenuItem_Click);
+            // 
+            // monitorToolStripMenuItem
+            // 
+            this.monitorToolStripMenuItem.Name = "monitorToolStripMenuItem";
+            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monitorToolStripMenuItem.Text = "Monitor";
+            this.monitorToolStripMenuItem.Click += new System.EventHandler(this.monitorToolStripMenuItem_Click);
             // 
             // btnUpdate
             // 
@@ -212,7 +233,8 @@
             this.equipoToolStripMenuItem2,
             this.departamentoToolStripMenuItem2,
             this.tecnicoToolStripMenuItem1,
-            this.monitorToolStripMenuItem1});
+            this.monitorToolStripMenuItem1,
+            this.cPUToolStripMenuItem1});
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
@@ -247,6 +269,13 @@
             this.tecnicoToolStripMenuItem1.Text = "Tecnico";
             this.tecnicoToolStripMenuItem1.Click += new System.EventHandler(this.tecnicoToolStripMenuItem1_Click);
             // 
+            // monitorToolStripMenuItem1
+            // 
+            this.monitorToolStripMenuItem1.Name = "monitorToolStripMenuItem1";
+            this.monitorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.monitorToolStripMenuItem1.Text = "Monitor";
+            this.monitorToolStripMenuItem1.Click += new System.EventHandler(this.monitorToolStripMenuItem1_Click);
+            // 
             // opcionSincronizar
             // 
             this.opcionSincronizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -273,30 +302,18 @@
             this.baseLocal.Text = "Base local";
             this.baseLocal.Click += new System.EventHandler(this.baseLocalToolStripMenuItem_Click);
             // 
-            // Fondo
+            // cPUToolStripMenuItem
             // 
-            this.Fondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Fondo.Image = global::Reportes_CentroComputo.Properties.Resources.Logo;
-            this.Fondo.Location = new System.Drawing.Point(0, 25);
-            this.Fondo.Name = "Fondo";
-            this.Fondo.Size = new System.Drawing.Size(574, 381);
-            this.Fondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Fondo.TabIndex = 1;
-            this.Fondo.TabStop = false;
+            this.cPUToolStripMenuItem.Name = "cPUToolStripMenuItem";
+            this.cPUToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cPUToolStripMenuItem.Text = "CPU";
+            this.cPUToolStripMenuItem.Click += new System.EventHandler(this.cPUToolStripMenuItem_Click);
             // 
-            // monitorToolStripMenuItem
+            // cPUToolStripMenuItem1
             // 
-            this.monitorToolStripMenuItem.Name = "monitorToolStripMenuItem";
-            this.monitorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.monitorToolStripMenuItem.Text = "Monitor";
-            this.monitorToolStripMenuItem.Click += new System.EventHandler(this.monitorToolStripMenuItem_Click);
-            // 
-            // monitorToolStripMenuItem1
-            // 
-            this.monitorToolStripMenuItem1.Name = "monitorToolStripMenuItem1";
-            this.monitorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.monitorToolStripMenuItem1.Text = "Monitor";
-            this.monitorToolStripMenuItem1.Click += new System.EventHandler(this.monitorToolStripMenuItem1_Click);
+            this.cPUToolStripMenuItem1.Name = "cPUToolStripMenuItem1";
+            this.cPUToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cPUToolStripMenuItem1.Text = "CPU";
             // 
             // FInicial
             // 
@@ -349,5 +366,7 @@
         private System.Windows.Forms.ToolStripMenuItem baseLocal;
         private System.Windows.Forms.ToolStripMenuItem monitorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem monitorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cPUToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cPUToolStripMenuItem1;
     }
 }

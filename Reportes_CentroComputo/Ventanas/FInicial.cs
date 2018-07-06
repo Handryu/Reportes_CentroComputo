@@ -65,7 +65,7 @@ namespace Reportes_CentroComputo.Ventanas
         {
             try
             {
-                new FMapeo().Visible = true;
+                new FInitMapeo().Visible = true;
             }
             catch (Exception ex)
             {
@@ -331,6 +331,19 @@ namespace Reportes_CentroComputo.Ventanas
                 Console.WriteLine(string.Format("Error inesperado: {0}", ex.Message));                
             }
             
+        }
+
+        private void cPUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                new FCPU(conexion).Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error inesperado: {0}", ex.Message));
+                Console.WriteLine(string.Format("Error inesperado: {0}", ex.Message));
+            }
         }
     }
 }
